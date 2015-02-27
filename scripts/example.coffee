@@ -11,7 +11,7 @@
 module.exports = (robot) ->
 
     robot.hear /i love you geekbot/i, (msg) ->
-      msg.send "I know"
+      msg.send "http://media0.giphy.com/media/umuDPcy78IbkY/200.gif"
   # robot.hear /badger/i, (msg) ->
   #  msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
