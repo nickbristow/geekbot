@@ -9,9 +9,24 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-
+    # command: I love you geekbot
     robot.hear /i love you geekbot/i, (msg) ->
       msg.send "http://media0.giphy.com/media/umuDPcy78IbkY/200.gif"
+    
+    # command: I hate you geekbot
+    robot.hear /(i hate geekbot|i hate you geekbot|i hate this geekbot|stop geekbot|shut up geekbot|shutup geekbot|damnit geekbot|fuck you geekbot)/gi,(msg) ->
+       msg.send "Haters gonna Hate"
+
+    # command: geekbot am I a winner
+    yesno = ['No','Yes']
+    robot.respond /am i a winner/i, (msg) ->
+      msg.send msg.random yesno
+
+    # command: bot d20
+    d20 = ['20! Critical Hit!','19','18','17','16','15','14','13','12','11','10','9','8','7','6','5','4','3','2','1, wow you don\'t do this often do you?']
+    robot.hear /d20/i, (msg) ->
+      msg.send msg.random d20
+
   # robot.hear /badger/i, (msg) ->
   #  msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
