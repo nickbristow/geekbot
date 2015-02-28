@@ -23,9 +23,24 @@ module.exports = (robot) ->
       msg.send msg.random yesno
 
     # command: bot d20
-    d20 = ['20! Critical Hit!','19','18','17','16','15','14','13','12','11','10','9','8','7','6','5','4','3','2','1, wow you don\'t do this often do you?']
-    robot.hear /d20/i, (msg) ->
-      msg.send msg.random d20
+    # d20 = ['20! Critical Hit!','19','18','17','16','15','14','13','12','11','10','9','8','7','6','5','4','3','2','1, wow you don\'t do this often do you?']
+    # robot.hear /d20/i, (msg) ->
+    #  msg.send msg.random d20
+
+    # command: roll a d number
+    robot.respond /roll a d(.*)/i, (msg) ->
+      #msg.send msg.match[1]
+      roll = parseInt(msg.match[1],10)+1 or false
+      if typeof roll is 'number'
+        rollnum = Math.floor(Math.random() * (roll - 1) + 1)
+        if rollnum is 20 and roll is 21
+          msg.send '20! Critical Hit!'
+        else if rollnum is 1
+          msg.send '1... are you even trying?'
+        else 
+          msg.send rollnum 
+      else
+        msg.send 'Im gonna need a number if you want me to roll that way...'
 
   # robot.hear /badger/i, (msg) ->
   #  msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
@@ -65,10 +80,10 @@ module.exports = (robot) ->
   #     return
   #   msg.send "#{answer}, but what is the question?"
   #
-   robot.respond /you are a little slow/, (msg) ->
-     setTimeout () ->
-       msg.send "Who you calling 'slow'?"
-     , 60 * 1000
+  # robot.respond /you are a little slow/, (msg) ->
+  #  setTimeout () ->
+  #     msg.send "Who you calling 'slow'?"
+  #   , 60 * 1000
   #
   # annoyIntervalId = null
   #
