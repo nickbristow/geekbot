@@ -29,7 +29,6 @@ module.exports = (robot) ->
 
     # command: roll a d number
     robot.respond /roll a d(.*)/i, (msg) ->
-      #msg.send msg.match[1]
       roll = parseInt(msg.match[1],10)+1 or false
       if typeof roll is 'number'
         rollnum = Math.floor(Math.random() * (roll - 1) + 1)
